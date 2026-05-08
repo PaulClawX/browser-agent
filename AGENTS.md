@@ -18,7 +18,7 @@ Core code lives in `src/browser_harness/`:
 
 An agent operating the harness only edits inside `agent-workspace/`:
 - `agent_helpers.py` — task-specific browser helpers the agent adds
-- `domain-skills/` — skills the agent writes and reads
+- `docs/domain-skills/` — skills the agent writes and reads
 
 # Contributing
 Consider what is really needed. Prefer the smallest diff that fixes the bug.

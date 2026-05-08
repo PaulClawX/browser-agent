@@ -145,13 +145,13 @@ Common helpers:
 - `src/browser_harness/` - core runtime modules
 - `SKILL.md` - operator rules for day-to-day use
 - `install.md` - first-time install and connection
-- `interaction-skills/` - reusable browser mechanics playbooks
+- `docs/interaction-skills/` - reusable browser mechanics playbooks
 - `agent-workspace/agent_helpers.py` - task-specific helper extensions
-- `agent-workspace/domain-skills/` - site-specific playbooks
+- `docs/domain-skills/` - site-specific playbooks
 
 ## Interaction Skills
 
-See [interaction-skills/](interaction-skills/) for practical playbooks, including:
+See [docs/interaction-skills/](docs/interaction-skills/) for practical playbooks, including:
 
 - connection, dialogs, dropdowns, uploads
 - tabs, iframes, cross-origin iframes, shadow DOM
@@ -166,7 +166,7 @@ Enable domain hinting:
 export BH_DOMAIN_SKILLS=1
 ```
 
-When enabled, `goto_url` can surface relevant files from `agent-workspace/domain-skills/<site>/`.
+When enabled, `goto_url` can surface relevant files from `docs/domain-skills/<site>/`.
 
 ## Cloud Mode (Optional)
 

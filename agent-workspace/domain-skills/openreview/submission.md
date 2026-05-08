@@ -28,7 +28,7 @@ Use this domain skill for OpenReview transfer and batch-submission workflows.
 
 ```bash
 python scripts/or_transfer.py \
-  --source-json docs/openreview/examples/source_note.min.json \
+  --source-json docs/domain-skills/openreview/examples/source_note.min.json \
   --venue iclr.cc/2027/Conference \
   --invitation iclr.cc/2027/Conference/-/Submission \
   --out transfer_payload.json
@@ -44,7 +44,7 @@ Apply only with explicit confirmation:
 
 ```bash
 python scripts/or_transfer.py \
-  --source-json docs/openreview/examples/source_note.min.json \
+  --source-json docs/domain-skills/openreview/examples/source_note.min.json \
   --venue iclr.cc/2027/Conference \
   --invitation iclr.cc/2027/Conference/-/Submission \
   --out transfer_payload.json \
@@ -55,7 +55,7 @@ python scripts/or_transfer.py \
 
 ```bash
 python scripts/or_batch.py \
-  --input docs/openreview/examples/batch.min.jsonl \
+  --input docs/domain-skills/openreview/examples/batch.min.jsonl \
   --invitation iclr.cc/2027/Conference/-/Submission \
   --out batch_payloads.json
 ```
@@ -70,7 +70,7 @@ Apply only with explicit confirmation:
 
 ```bash
 python scripts/or_batch.py \
-  --input docs/openreview/examples/batch.min.jsonl \
+  --input docs/domain-skills/openreview/examples/batch.min.jsonl \
   --invitation iclr.cc/2027/Conference/-/Submission \
   --out batch_payloads.json \
   --apply
@@ -84,5 +84,5 @@ python scripts/or_batch.py \
 
 ## Minimal examples
 
-- `docs/openreview/examples/source_note.min.json`
-- `docs/openreview/examples/batch.min.jsonl`
+- `docs/domain-skills/openreview/examples/source_note.min.json`
+- `docs/domain-skills/openreview/examples/batch.min.jsonl`

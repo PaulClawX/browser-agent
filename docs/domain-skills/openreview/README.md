@@ -36,10 +36,10 @@ python scripts/or_batch.py \
 
 ## Minimal example files
 
-- `docs/openreview/examples/source_note.min.json`
-- `docs/openreview/examples/batch.min.jsonl`
+- `docs/domain-skills/openreview/examples/source_note.min.json`
+- `docs/domain-skills/openreview/examples/batch.min.jsonl`
 
 
 ## Domain skill location
 
-Primary playbook now lives at `agent-workspace/domain-skills/openreview/submission.md`.
+Primary playbook now lives at `docs/domain-skills/openreview/submission.md`.

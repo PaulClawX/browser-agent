@@ -7,9 +7,9 @@ description: Direct browser control via CDP. Use when the user wants to automate
 
 Direct browser control via CDP. For task-specific edits, use `agent-workspace/agent_helpers.py`. For setup, install, or connection problems, read install.md.
 
-Domain skills (community-contributed per-site playbooks under `agent-workspace/domain-skills/`) are off by default. Set `BH_DOMAIN_SKILLS=1` to enable them; see the bottom section.
+Domain skills (community-contributed per-site playbooks under `docs/domain-skills/`) are off by default. Set `BH_DOMAIN_SKILLS=1` to enable them; see the bottom section.
 
-**If `BH_DOMAIN_SKILLS=1` and the task is site-specific, read every file in the matching `agent-workspace/domain-skills/<site>/` directory before inventing an approach.**
+**If `BH_DOMAIN_SKILLS=1` and the task is site-specific, read every file in the matching `docs/domain-skills/<site>/` directory before inventing an approach.**
 
 ## Usage
 
@@ -55,11 +55,11 @@ print(page_info())
 
 start_remote_daemon prints liveUrl and auto-opens it in the local browser (if a GUI is detected) so the user can watch along. Headless servers print only — share the URL with the user. The daemon PATCHes the cloud browser to stop on shutdown, which persists profile state. Running remote daemons bill until timeout.
 
-Profiles (cookies-only login state) live in interaction-skills/profile-sync.md — covers list_cloud_profiles(), the chat-driven "which profile?" pattern, and sync_local_profile() for uploading a local Chrome profile.
+Profiles (cookies-only login state) live in docs/interaction-skills/profile-sync.md — covers list_cloud_profiles(), the chat-driven "which profile?" pattern, and sync_local_profile() for uploading a local Chrome profile.
 
 ## Interaction skills
 
-If you start struggling with a specific mechanic while navigating, look in interaction-skills/ for helpers. They cover reusable UI mechanics like dialogs, tabs, dropdowns, iframes, and uploads. The available interaction skills are:
+If you start struggling with a specific mechanic while navigating, look in docs/interaction-skills/ for helpers. They cover reusable UI mechanics like dialogs, tabs, dropdowns, iframes, and uploads. The available interaction skills are:
 - connection.md
 - cookies.md
 - cross-origin-iframes.md
@@ -112,15 +112,15 @@ If you start struggling with a specific mechanic while navigating, look in inter
 - After every meaningful action, re-screenshot before assuming it worked. Use the image to verify changed state, open menus, navigation, visible errors, and whether the page is in the state you expected.
 - Use screenshots to drive exploration. They are often the fastest way to find the next click target, notice hidden blockers, and decide if a selector is even worth writing.
 - Prefer compositor-level actions over framework hacks. Try screenshots, coordinate clicks, and raw key input before adding DOM-specific workarounds.
-- If you need framework-specific DOM tricks, check interaction-skills/ first. That is where dropdown, dialog, iframe, shadow DOM, and form-specific guidance belongs.
+- If you need framework-specific DOM tricks, check docs/interaction-skills/ first. That is where dropdown, dialog, iframe, shadow DOM, and form-specific guidance belongs.
 
 ## Domain skills (opt-in)
 
-Only applies when `BH_DOMAIN_SKILLS=1`. Otherwise ignore — `agent-workspace/domain-skills/` is dormant and `goto_url` won't surface skill files.
+Only applies when `BH_DOMAIN_SKILLS=1`. Otherwise ignore — `docs/domain-skills/` is dormant and `goto_url` won't surface skill files.
 
-When enabled, search `agent-workspace/domain-skills/<host>/` before inventing an approach. `goto_url` returns up to 10 skill filenames for the navigated host.
+When enabled, search `docs/domain-skills/<host>/` before inventing an approach. `goto_url` returns up to 10 skill filenames for the navigated host.
 
-If you learn anything non-obvious — a private API, stable selector, framework quirk, URL pattern, hidden wait, or site-specific trap — open a PR to `agent-workspace/domain-skills/<site>/`. Capture the durable shape of the site (the map, not the diary). Don't write pixel coordinates (break on layout), task narration, or secrets — the directory is public.
+If you learn anything non-obvious — a private API, stable selector, framework quirk, URL pattern, hidden wait, or site-specific trap — open a PR to `docs/domain-skills/<site>/`. Capture the durable shape of the site (the map, not the diary). Don't write pixel coordinates (break on layout), task narration, or secrets — the directory is public.
 
 ## OpenReview add-on
 
@@ -134,4 +134,4 @@ Both are dry-run-first and require explicit `--apply` to write.
 
 ## OpenReview domain skill
 
-Use `agent-workspace/domain-skills/openreview/submission.md` for OpenReview transfer/batch workflows.
+Use `docs/domain-skills/openreview/submission.md` for OpenReview transfer/batch workflows.

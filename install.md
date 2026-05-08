@@ -5,7 +5,7 @@ description: Install browser-agent into the current agent and connect it to a br
 
 # `browser-agent` installation
 
-Use this file only for browser-agent install, browser connection setup, and connection troubleshooting. For day-to-day browser work, read `SKILL.md`. Task-specific edits belong in `agent-workspace/agent_helpers.py` and `agent-workspace/domain-skills/`.
+Use this file only for browser-agent install, browser connection setup, and connection troubleshooting. For day-to-day browser work, read `SKILL.md`. Task-specific edits belong in `agent-workspace/agent_helpers.py` and `docs/domain-skills/`.
 
 ## Recommended `browser-agent` setup
 
