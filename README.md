@@ -180,13 +180,3 @@ With `BROWSER_USE_API_KEY`, you can run isolated remote browsers:
 ## License
 
 [MIT](LICENSE)
-
-## OpenReview Toolkit
-
-This repository now includes a dry-run-first OpenReview toolkit.
-
-- `scripts/or_transfer.py`: source note transfer payload generation + optional apply
-- `scripts/or_batch.py`: batch payload generation + optional apply
-- Docs: `docs/openreview/README.md`
-
-Both commands default to dry-run. Writes happen only with `--apply`.

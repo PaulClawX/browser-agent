@@ -38,3 +38,8 @@ python scripts/or_batch.py \
 
 - `docs/openreview/examples/source_note.min.json`
 - `docs/openreview/examples/batch.min.jsonl`
+
+
+## Domain skill location
+
+Primary playbook now lives at `agent-workspace/domain-skills/openreview/submission.md`.

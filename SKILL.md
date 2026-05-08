@@ -78,7 +78,6 @@ If you start struggling with a specific mechanic while navigating, look in inter
 - uploads.md
 - viewport.md
 - gemini-image-generation-editing.md
-- openreview-submission.md
 
 ## What actually works
 
@@ -131,3 +130,8 @@ For OpenReview transfer and batch submission workflows, use:
 - `python scripts/or_batch.py --help`
 
 Both are dry-run-first and require explicit `--apply` to write.
+
+
+## OpenReview domain skill
+
+Use `agent-workspace/domain-skills/openreview/submission.md` for OpenReview transfer/batch workflows.
