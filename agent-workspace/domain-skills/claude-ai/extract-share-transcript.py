@@ -1,6 +1,6 @@
 """Extract a transcript from a claude.ai share URL.
 
-Usage (run inside browser-harness):
+Usage (run inside browser-agent):
     CLAUDE_SHARE_URL=https://claude.ai/share/<uuid> \
     OUTPUT_DIR=/path/to/transcripts \
     bh -c "$(cat agent-workspace/domain-skills/claude-ai/extract-share-transcript.py)"
@@ -19,7 +19,7 @@ out_dir = os.environ.get("OUTPUT_DIR")
 if not share_url or not out_dir:
     sys.exit("set CLAUDE_SHARE_URL and OUTPUT_DIR env vars")
 
-new_tab(share_url)            # noqa: F821 — provided by browser-harness
+new_tab(share_url)            # noqa: F821 — provided by browser-agent
 wait_for_load()               # noqa: F821
 time.sleep(2)                 # let the conversation tree render
 

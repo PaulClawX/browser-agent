@@ -14,7 +14,7 @@ direct-booking portal of the Jin Jiang group, covering ~50 sub-brands
   parameter-schema gate, no `¥?` placeholders.
 - `http_get` does not work (SPA shell only). Need a browser session.
 - Browser cookies aren't required either — a freshly-opened tab via
-  `browser-harness` immediately renders 200+ hotels with prices.
+  `browser-agent` immediately renders 200+ hotels with prices.
 - Detail pages show full rate-plan breakdown (multiple room types ×
   breakfast/cancellation matrix) anonymously.
 - Compared to: ly.com forces login for every price; ctrip works only via a

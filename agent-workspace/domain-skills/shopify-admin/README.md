@@ -25,7 +25,7 @@ The browser is the right tool only when:
 
 ## Authentication
 
-Mike (or the human owner) must be logged into `admin.shopify.com` in the Chrome session that browser-harness attaches to. The harness does NOT log in — it inherits the human's session.
+Mike (or the human owner) must be logged into `admin.shopify.com` in the Chrome session that browser-agent attaches to. The harness does NOT log in — it inherits the human's session.
 
 If you hit `accounts.shopify.com` redirect, stop and ask the human to log in. Don't type credentials.
 

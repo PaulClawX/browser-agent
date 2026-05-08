@@ -9,8 +9,8 @@ Loom has **two** kinds of folder URLs and they need different tools:
 
 | URL pattern | Visibility | Tool |
 |---|---|---|
-| `loom.com/share/folder/<32-hex>` | Public-shared (anyone with link) | **yt-dlp** — `LoomFolderIE` already supports this. Skip browser-harness entirely. |
-| `loom.com/looms/videos/<slug>-<32-hex>` | Private workspace library | **browser-harness** (this skill). yt-dlp doesn't support library folders, and the underlying `/v1/folders/<id>` endpoint returns `Forbidden` even with cookies. |
+| `loom.com/share/folder/<32-hex>` | Public-shared (anyone with link) | **yt-dlp** — `LoomFolderIE` already supports this. Skip browser-agent entirely. |
+| `loom.com/looms/videos/<slug>-<32-hex>` | Private workspace library | **browser-agent** (this skill). yt-dlp doesn't support library folders, and the underlying `/v1/folders/<id>` endpoint returns `Forbidden` even with cookies. |
 
 The library variant is what every Loom user sees in their own workspace sidebar. There is no public read API for it; the only programmatic route is the authenticated session in the user's browser. That's why this skill exists.
 

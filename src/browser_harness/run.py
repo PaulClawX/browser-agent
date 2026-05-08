@@ -29,7 +29,7 @@ HELP = """Browser Harness
 Read SKILL.md for the default workflow and examples.
 
 Typical usage:
-  browser-harness -c '
+  browser-agent -c '
   ensure_real_tab()
   print(page_info())
   '
@@ -37,10 +37,10 @@ Typical usage:
 Helpers are pre-imported. The daemon auto-starts and connects to the running browser.
 
 Commands:
-  browser-harness --version        print the installed version
-  browser-harness --doctor         diagnose install, daemon, and browser state
-  browser-harness --update [-y]    pull the latest version (agents: pass -y)
-  browser-harness --reload         stop the daemon so next call picks up code changes
+  browser-agent --version        print the installed version
+  browser-agent --doctor         diagnose install, daemon, and browser state
+  browser-agent --update [-y]    pull the latest version (agents: pass -y)
+  browser-agent --reload         stop the daemon so next call picks up code changes
 """
 
 
@@ -86,9 +86,9 @@ def main():
         os.environ["BH_DEBUG_CLICKS"] = "1"
         args = args[1:]
     if not args or args[0] != "-c":
-        sys.exit("Usage: browser-harness -c \"print(page_info())\"")
+        sys.exit("Usage: browser-agent -c \"print(page_info())\"")
     if len(args) < 2:
-        sys.exit("Usage: browser-harness -c \"print(page_info())\"")
+        sys.exit("Usage: browser-agent -c \"print(page_info())\"")
     print_update_banner()
     # Auto-bootstrap a cloud browser is opt-in via BU_AUTOSPAWN — BROWSER_USE_API_KEY alone
     # is not enough, since the key is commonly set for unrelated reasons (profile sync,

@@ -104,5 +104,5 @@ After a successful publish, `curl` against the live domain may serve stale HTML 
 ## Prerequisites for automation on macOS
 
 - Chrome: "View → Developer → **Allow JavaScript from Apple Events**" checked.
-- System Settings → Privacy → **Accessibility** → grant to whichever process drives keystrokes (node, osascript, browser-harness wrapper).
+- System Settings → Privacy → **Accessibility** → grant to whichever process drives keystrokes (node, osascript, browser-agent wrapper).
 - Framer tab must exist in the front Chrome window; the editor does not tolerate off-screen or backgrounded tabs well during paste flows (Monaco loses focus).

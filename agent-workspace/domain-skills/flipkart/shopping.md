@@ -1,6 +1,6 @@
 # Flipkart — Gift & Product Shopping (Field-Tested)
 
-Field-tested against flipkart.com on 2026-04-27/28 using `browser-harness` CDP
+Field-tested against flipkart.com on 2026-04-27/28 using `browser-agent` CDP
 helpers (`goto_url`, `js`, `click_at_xy`, `type_text`, `capture_screenshot`,
 `scroll`, `press_key`, `page_info`).
 

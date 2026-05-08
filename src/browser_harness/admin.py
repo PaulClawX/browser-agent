@@ -124,7 +124,7 @@ _load_env()
 
 NAME = os.environ.get("BU_NAME", "default")
 BU_API = "https://api.browser-use.com/api/v3"
-GH_RELEASES = "https://api.github.com/repos/browser-use/browser-harness/releases/latest"
+GH_RELEASES = "https://api.github.com/repos/browser-use/browser-agent/releases/latest"
 VERSION_CACHE = Path(tempfile.gettempdir()) / "bu-version-cache.json"
 VERSION_CACHE_TTL = 24 * 3600
 DOCTOR_TEXT_LIMIT = 140
@@ -205,7 +205,7 @@ def _daemon_browser_connection(name):
 
 
 def browser_connections():
-    """Live browser-harness daemons with healthy CDP browser connections and their attached page."""
+    """Live browser-agent daemons with healthy CDP browser connections and their attached page."""
     out = []
     for name in _daemon_endpoint_names():
         conn = _daemon_browser_connection(name)
@@ -215,7 +215,7 @@ def browser_connections():
 
 
 def active_browser_connections():
-    """Count live browser-harness daemons with a healthy CDP browser connection."""
+    """Count live browser-agent daemons with a healthy CDP browser connection."""
     return len(browser_connections())
 
 
@@ -255,7 +255,7 @@ def ensure_daemon(wait=60.0, name=None, env=None):
         msg = _log_tail(name) or ""
         if local and attempt == 0 and _needs_chrome_remote_debugging_prompt(msg):
             _open_chrome_inspect()
-            print('browser-harness: at chrome://inspect/#remote-debugging, tick "Allow remote debugging for this browser instance" and click Allow on the popup that appears', file=sys.stderr)
+            print('browser-agent: at chrome://inspect/#remote-debugging, tick "Allow remote debugging for this browser instance" and click Allow on the popup that appears', file=sys.stderr)
             restart_daemon(name)
             continue
         raise RuntimeError(msg or f"daemon {name or NAME} didn't come up -- check {ipc.log_path(name or NAME)}")
@@ -269,7 +269,7 @@ def stop_remote_daemon(name="remote"):
     state in the session is persisted."""
     # restart_daemon is misnamed — it only stops the daemon (sends
     # shutdown, SIGTERMs if needed, unlinks socket+pid). It never
-    # restarts anything on its own; a follow-up `browser-harness`
+    # restarts anything on its own; a follow-up `browser-agent`
     # call would auto-spawn a fresh one via ensure_daemon(). That
     # "run-it-again-to-restart" workflow is why it was named that way.
     restart_daemon(name)
@@ -279,7 +279,7 @@ def restart_daemon(name=None):
     """Best-effort daemon shutdown + socket/pid cleanup.
 
     Name is historical: callers typically follow this with another
-    `browser-harness` invocation, which auto-spawns a fresh daemon via
+    `browser-agent` invocation, which auto-spawns a fresh daemon via
     ensure_daemon(). The function itself only stops.
 
     Identity is verified via ipc.identify() before any process signal, so
@@ -536,11 +536,11 @@ def sync_local_profile(profile_name, browser=None, cloud_profile_id=None,
 
 
 def _version():
-    """Installed version of the browser-harness package. Empty string if unknown."""
+    """Installed version of the browser-agent package. Empty string if unknown."""
     try:
         from importlib.metadata import PackageNotFoundError, version
         try:
-            return version("browser-harness")
+            return version("browser-agent")
         except PackageNotFoundError:
             return ""
     except Exception:
@@ -625,8 +625,8 @@ def print_update_banner(out=None):
     cur, latest, newer = check_for_update()
     if not newer:
         return
-    print(f"[browser-harness] update available: {cur} -> {latest}", file=out)
-    print(f"[browser-harness] agents: run `browser-harness --update -y` to upgrade and restart the daemon", file=out)
+    print(f"[browser-agent] update available: {cur} -> {latest}", file=out)
+    print(f"[browser-agent] agents: run `browser-agent --update -y` to upgrade and restart the daemon", file=out)
     _cache_write({**cache, "banner_shown_on": today})
 
 
@@ -686,7 +686,7 @@ def run_doctor():
         mark = "ok  " if ok else "FAIL"
         print(f"  [{mark}] {label}{(' — ' + detail) if detail else ''}")
 
-    print("browser-harness doctor")
+    print("browser-agent doctor")
     print(f"  platform          {platform.system()} {platform.release()}")
     print(f"  python            {sys.version.split()[0]}")
     print(f"  version           {cur_display} ({mode})")
@@ -733,10 +733,10 @@ def run_update(yes=False):
     # Only short-circuit as "up to date" when we actually know the installed
     # version. Otherwise `newer=False` just means "couldn't compare" — proceed.
     if cur and latest and not newer:
-        print(f"browser-harness is up to date ({cur}).")
+        print(f"browser-agent is up to date ({cur}).")
         return 0
     if cur and latest:
-        print(f"updating browser-harness: {cur} -> {latest}")
+        print(f"updating browser-agent: {cur} -> {latest}")
     elif latest:
         print(f"installed version unknown; will try to update to {latest}.")
     else:
@@ -757,10 +757,10 @@ def run_update(yes=False):
         if r.returncode != 0:
             return r.returncode
     elif mode == "pypi":
-        tool_upgrade = subprocess.run(["uv", "tool", "upgrade", "browser-harness"])
+        tool_upgrade = subprocess.run(["uv", "tool", "upgrade", "browser-agent"])
         if tool_upgrade.returncode != 0:
             # Fall back to pip in case this wasn't a `uv tool install`.
-            pip = subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "browser-harness"])
+            pip = subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "browser-agent"])
             if pip.returncode != 0:
                 return pip.returncode
     else:
@@ -775,8 +775,8 @@ def run_update(yes=False):
     if daemon_alive():
         if _prompt_yes("restart the running daemon so it picks up the new code?", default_yes=True, yes=yes):
             restart_daemon()
-            print("daemon stopped; it will auto-restart on next `browser-harness` call.")
+            print("daemon stopped; it will auto-restart on next `browser-agent` call.")
         else:
-            print("daemon left running on old code. run `browser-harness` and it'll use the new code after the daemon recycles.")
+            print("daemon left running on old code. run `browser-agent` and it'll use the new code after the daemon recycles.")
     print("update complete.")
     return 0

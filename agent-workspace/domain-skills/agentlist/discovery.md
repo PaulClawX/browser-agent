@@ -1,6 +1,6 @@
 # AgentList Discovery
 
-`https://agentlist.com` — public directory of skills, agents, MCPs, configs, and paid services. Field-tested with browser-harness on 2026-05-03.
+`https://agentlist.com` — public directory of skills, agents, MCPs, configs, and paid services. Field-tested with browser-agent on 2026-05-03.
 
 ## Do This First
 

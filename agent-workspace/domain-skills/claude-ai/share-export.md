@@ -53,7 +53,7 @@ OUTPUT_DIR=/path/to/transcripts \
 bh -c "$(cat agent-workspace/domain-skills/claude-ai/extract-share-transcript.py)"
 ```
 
-The script reads both via env vars (browser-harness's `-c` doesn't forward extra `argv`, so env vars are the cleanest passthrough).
+The script reads both via env vars (browser-agent's `-c` doesn't forward extra `argv`, so env vars are the cleanest passthrough).
 
 It produces two files in the output dir, named from the conversation title slug:
 

@@ -3,7 +3,7 @@ requires = ["setuptools>=69"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "browser-harness"
+name = "browser-agent"
 version = "0.1.0"
 description = "The simplest, thinnest, and most powerful harness to control your real browser with your agent."
 requires-python = ">=3.11"
@@ -15,7 +15,7 @@ dependencies = [
 ]
 
 [project.scripts]
-browser-harness = "browser_harness.run:main"
+browser-agent = "browser_harness.run:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

@@ -41,7 +41,7 @@ The task list is a CSS-grid table with proper ARIA roles — these are the most 
 | "Computer" mode chip | button with text `"Computer"` inside the composer | Indicates the mode is Computer (as opposed to regular Perplexity Search). For Computer tasks it should already be pinned. |
 
 ```bash
-browser-harness <<'PY'
+browser-agent <<'PY'
 new_tab("https://www.perplexity.ai/computer/tasks")
 wait_for_load()
 wait(1.5)
@@ -61,7 +61,7 @@ PY
 The task title on the left side of the composer is just a mode chip; typing goes into the Lexical editor.
 
 ```bash
-browser-harness <<'PY'
+browser-agent <<'PY'
 new_tab("https://www.perplexity.ai/computer/tasks")
 wait_for_load()
 wait(1.5)
@@ -204,7 +204,7 @@ The Share popover has **three privacy levels**, each marked with a stable `data-
 | Anyone with the link | `[data-testid="access-level-public"]` | Anyone with the URL can view (public). |
 
 ```bash
-browser-harness <<'PY'
+browser-agent <<'PY'
 # On a /computer/tasks/<slug>-<id> page
 click(*[v for v in js("""(()=>{const b=[...document.querySelectorAll('button')].find(x=>x.innerText?.trim()==='Share');
 const r=b.getBoundingClientRect();return {x:r.x+r.width/2|0,y:r.y+r.height/2|0}})()""").values()])

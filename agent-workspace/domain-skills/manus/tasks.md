@@ -50,7 +50,7 @@ There is **no plain REST/JSON convenience layer** — every method is Connect. `
 ## Path 2: Browser DOM submission
 
 ```bash
-browser-harness <<'PY'
+browser-agent <<'PY'
 new_tab("https://manus.im/app")
 wait_for_load()
 wait(1.5)  # SPA still hydrating; composer is a TipTap editor that mounts late
@@ -125,7 +125,7 @@ Selectors on a running / completed task page:
 ### Sharing a completed task
 
 ```bash
-browser-harness <<'PY'
+browser-agent <<'PY'
 # On a /app/<id> page — click the "Share" button (top-right header)
 rect = js(r"""
 (()=>{const b=[...document.querySelectorAll('button,[role=\"button\"]')].find(x=>x.innerText?.trim()==='Share');

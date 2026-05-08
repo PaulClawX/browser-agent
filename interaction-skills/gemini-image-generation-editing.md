@@ -13,7 +13,7 @@ Use this playbook when the user wants **image generation** or **image editing** 
 
 - User is already logged into `https://gemini.google.com/app`.
 - A local reference image exists (absolute path), e.g. `/path/to/reference.jpg`.
-- Browser harness daemon is connected (`browser-harness --doctor` shows chrome ok, daemon ok).
+- Browser harness daemon is connected (`browser-agent --doctor` shows chrome ok, daemon ok).
 
 ## Reliability rules (non-negotiable)
 

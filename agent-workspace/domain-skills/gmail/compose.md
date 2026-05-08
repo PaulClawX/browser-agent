@@ -65,7 +65,7 @@ type_text("Body text goes here.")
 
 ## Attachments — use `DOM.setFileInputFiles` on the *visible* compose's input
 
-The paperclip button opens a native file picker that browser-harness can't drive. Instead, set files directly on Gmail's hidden file input.
+The paperclip button opens a native file picker that browser-agent can't drive. Instead, set files directly on Gmail's hidden file input.
 
 **Gotcha:** there is one `input[type="file"][name="Filedata"]` per compose dialog. If you use `upload_file('input[type="file"][name="Filedata"]', ...)`, the default `DOM.querySelector` returns the *first* match — usually belongs to a stale/minimized compose, and Gmail ignores it. Always target the input scoped to the **visible** compose:
 

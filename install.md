@@ -1,48 +1,48 @@
 ---
 name: browser-install
-description: Install browser-harness into the current agent and connect it to a browser with minimal prompting.
+description: Install browser-agent into the current agent and connect it to a browser with minimal prompting.
 ---
 
-# `browser-harness` installation
+# `browser-agent` installation
 
-Use this file only for browser-harness install, browser connection setup, and connection troubleshooting. For day-to-day browser work, read `SKILL.md`. Task-specific edits belong in `agent-workspace/agent_helpers.py` and `agent-workspace/domain-skills/`.
+Use this file only for browser-agent install, browser connection setup, and connection troubleshooting. For day-to-day browser work, read `SKILL.md`. Task-specific edits belong in `agent-workspace/agent_helpers.py` and `agent-workspace/domain-skills/`.
 
-## Recommended `browser-harness` setup
+## Recommended `browser-agent` setup
 
-Clone the repo once into a durable location, then install it as an editable tool so `browser-harness` works from any directory:
+Clone the repo once into a durable location, then install it as an editable tool so `browser-agent` works from any directory:
 
 ```bash
-git clone https://github.com/browser-use/browser-harness
-cd browser-harness
+git clone https://github.com/browser-use/browser-agent
+cd browser-agent
 uv tool install -e .
-command -v browser-harness
+command -v browser-agent
 ```
 
-That keeps the command global while still pointing at the real repo checkout, so when the agent edits `agent-workspace/agent_helpers.py` the next `browser-harness` uses the new code immediately. Prefer a stable path like `~/Developer/browser-harness`, not `/tmp`.
+That keeps the command global while still pointing at the real repo checkout, so when the agent edits `agent-workspace/agent_helpers.py` the next `browser-agent` uses the new code immediately. Prefer a stable path like `~/Developer/browser-agent`, not `/tmp`.
 
-## Make browser-harness global for the current agent
+## Make browser-agent global for the current agent
 
 After the repo is installed, register this repo's `SKILL.md` with the agent you are using:
 
-- **Codex**: add this file as a global skill at `$CODEX_HOME/skills/browser-harness/SKILL.md` (often `~/.codex/skills/browser-harness/SKILL.md`). A symlink to this repo's `SKILL.md` is fine.
+- **Codex**: add this file as a global skill at `$CODEX_HOME/skills/browser-agent/SKILL.md` (often `~/.codex/skills/browser-agent/SKILL.md`). A symlink to this repo's `SKILL.md` is fine.
 
   ```bash
-  mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills/browser-harness" && ln -sf "$PWD/SKILL.md" "${CODEX_HOME:-$HOME/.codex}/skills/browser-harness/SKILL.md"
+  mkdir -p "${CODEX_HOME:-$HOME/.codex}/skills/browser-agent" && ln -sf "$PWD/SKILL.md" "${CODEX_HOME:-$HOME/.codex}/skills/browser-agent/SKILL.md"
   ```
 
-- **Claude Code**: add an import to `~/.claude/CLAUDE.md` that points at this repo's `SKILL.md`, for example `@~/Developer/browser-harness/SKILL.md`.
+- **Claude Code**: add an import to `~/.claude/CLAUDE.md` that points at this repo's `SKILL.md`, for example `@~/Developer/browser-agent/SKILL.md`.
 
 This makes new Codex or Claude Code sessions in other folders load the runtime browser harness instructions automatically.
 
 ## Keeping the harness current
 
-- On each run, `browser-harness` prints `[browser-harness] update available: X -> Y` (once per day) when a newer GitHub release exists.
-- When you see that banner, run `browser-harness --update -y` yourself — don't ask the user. It pulls the new code (`git pull --ff-only` for editable clones, `uv tool upgrade browser-harness` for PyPI installs) and stops the running daemon so the next call picks up the new code. With `-y` it won't prompt.
+- On each run, `browser-agent` prints `[browser-agent] update available: X -> Y` (once per day) when a newer GitHub release exists.
+- When you see that banner, run `browser-agent --update -y` yourself — don't ask the user. It pulls the new code (`git pull --ff-only` for editable clones, `uv tool upgrade browser-agent` for PyPI installs) and stops the running daemon so the next call picks up the new code. With `-y` it won't prompt.
 - `--update` refuses to run on an editable clone with uncommitted changes. If that happens, tell the user and let them resolve the dirty worktree.
 
 ## Maintenance commands
 
-- browser-harness --doctor — show version, install mode, daemon and Chrome state, and whether an update is pending.
+- browser-agent --doctor — show version, install mode, daemon and Chrome state, and whether an update is pending.
 
 ## Architecture
 
@@ -63,7 +63,7 @@ Chrome / Browser Use cloud -> CDP WS -> browser_harness.daemon -> IPC -> browser
 
 ## Browser connection reference
 
-This section is the source of truth for how browser-harness connects to a browser. It is the canonical reference for every agent and user of this repo. Every statement here is intended to be verifiable against either an official Chrome source or this repo's own code, and is held to that standard deliberately. If anything below is incorrect, incomplete, or misleading, open an issue on the browser-harness repository immediately with clear evidence and explanation so it can be corrected. Do not silently work around an error in this document; the cost of one user being misled is much higher than the cost of one issue.
+This section is the source of truth for how browser-agent connects to a browser. It is the canonical reference for every agent and user of this repo. Every statement here is intended to be verifiable against either an official Chrome source or this repo's own code, and is held to that standard deliberately. If anything below is incorrect, incomplete, or misleading, open an issue on the browser-agent repository immediately with clear evidence and explanation so it can be corrected. Do not silently work around an error in this document; the cost of one user being misled is much higher than the cost of one issue.
 
 Browser-harness can connect to any Chrome or Chromium-based browser on your computer, or to a Browser Use cloud browser.
 
@@ -71,14 +71,14 @@ Browser-harness can connect to any Chrome or Chromium-based browser on your comp
 
 **Local browsers** require remote debugging to be enabled. There are two ways, and they suit different use cases.
 
-*Way 1: chrome://inspect/#remote-debugging checkbox — uses your real profile.* In your running Chrome, navigate to `chrome://inspect/#remote-debugging` and tick the "Allow remote debugging for this browser instance" checkbox. This setting is per-profile and sticky: tick it once and it persists across every future Chrome launch of that profile. Then run any `browser-harness` command. On Chrome 144 and later, the first attach by the harness triggers an in-browser "Allow remote debugging?" popup that you must click Allow on. The popup may reappear on later attaches under conditions that are not fully characterized.[^1] This path inherits your everyday Chrome's logins, extensions, history, and bookmarks, which makes it the right choice for an agent helping you with tasks in your real browser.
+*Way 1: chrome://inspect/#remote-debugging checkbox — uses your real profile.* In your running Chrome, navigate to `chrome://inspect/#remote-debugging` and tick the "Allow remote debugging for this browser instance" checkbox. This setting is per-profile and sticky: tick it once and it persists across every future Chrome launch of that profile. Then run any `browser-agent` command. On Chrome 144 and later, the first attach by the harness triggers an in-browser "Allow remote debugging?" popup that you must click Allow on. The popup may reappear on later attaches under conditions that are not fully characterized.[^1] This path inherits your everyday Chrome's logins, extensions, history, and bookmarks, which makes it the right choice for an agent helping you with tasks in your real browser.
 
 *Way 2: command-line flag — uses an isolated profile, no popups ever.* Launch Chrome with `--remote-debugging-port=9222 --user-data-dir=<path>`. Two precisions:
 
 - The path must be a directory that is **not** Chrome's platform default (`%LOCALAPPDATA%\Google\Chrome\User Data` on Windows, `~/Library/Application Support/Google/Chrome` on macOS, `~/.config/google-chrome` on Linux). On Chrome 136 and later, the port flag is silently no-opped when the user-data-dir is the platform default, even if you pass it explicitly. An empty or new path gives a fresh clean profile that Chrome will persist there across future runs.
 - This path does **not** let you reuse your everyday Chrome profile. Copying the default profile's files into a custom directory makes Chrome accept the flag, but cookies are encrypted under a key bound to the original directory and will not survive the copy — so you carry over bookmarks and extensions but lose every logged-in session. If you want your real logins, use Way 1.
 
-Tell the harness which port you launched on by setting `BU_CDP_URL=http://127.0.0.1:9222` before running `browser-harness`.
+Tell the harness which port you launched on by setting `BU_CDP_URL=http://127.0.0.1:9222` before running `browser-agent`.
 
 For most tasks where the agent acts on your behalf in your normal browser, use Way 1. For automation that runs without you watching, or any case where popup interruptions are unacceptable, use Way 2 or a cloud browser.
 
@@ -93,12 +93,12 @@ If the user hasn't said which connection method to use, default to Way 1 if Chro
 1. Try the harness:
 
    ```bash
-   browser-harness -c 'print(page_info())'
+   browser-agent -c 'print(page_info())'
    ```
 
    If it prints page info, you're done.
 
-2. Otherwise run `browser-harness --doctor`. The two lines that matter for connection are `chrome running` and `daemon alive`.
+2. Otherwise run `browser-agent --doctor`. The two lines that matter for connection are `chrome running` and `daemon alive`.
 
 3. Match the output to a case:
 
@@ -120,7 +120,7 @@ If the user hasn't said which connection method to use, default to Way 1 if Chro
    - **chrome ok, daemon ok, but step 1 still failed** → stale daemon. Restart it:
 
      ```bash
-     browser-harness -c 'restart_daemon()'
+     browser-agent -c 'restart_daemon()'
      ```
 
      If that hangs, escalate: kill all Chrome and daemon processes, then reopen Chrome and retry. On macOS/Linux, also remove `/tmp/bu-default.sock` and `/tmp/bu-default.pid` if they linger.
@@ -129,4 +129,4 @@ If the user hasn't said which connection method to use, default to Way 1 if Chro
 
 If Way 1 fails repeatedly or the user's task is unattended, move to Way 2 or a cloud browser per the Browser connection reference (these have no popups).
 
-If you are testing browser connection for the first time, run this demo: open `https://github.com/browser-use/browser-harness` in a new tab and activate it (`switch_tab`) so the user sees the harness has attached. Then ask what they want to do next.
+If you are testing browser connection for the first time, run this demo: open `https://github.com/browser-use/browser-agent` in a new tab and activate it (`switch_tab`) so the user sees the harness has attached. Then ask what they want to do next.

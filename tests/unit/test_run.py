@@ -7,7 +7,7 @@ from browser_harness import run
 
 def test_c_flag_executes_code():
     stdout = StringIO()
-    with patch.object(sys, "argv", ["browser-harness", "-c", "print('hello from -c')"]), \
+    with patch.object(sys, "argv", ["browser-agent", "-c", "print('hello from -c')"]), \
          patch("browser_harness.run.ensure_daemon"), \
          patch("browser_harness.run.print_update_banner"), \
          patch("sys.stdout", stdout):
@@ -19,7 +19,7 @@ def test_cloud_bootstrap_on_headless_server(monkeypatch):
     """No daemon, no local Chrome, API key + BU_AUTOSPAWN set -> auto-provision cloud daemon."""
     monkeypatch.setenv("BROWSER_USE_API_KEY", "test-key")
     monkeypatch.setenv("BU_AUTOSPAWN", "1")
-    with patch.object(sys, "argv", ["browser-harness", "-c", "x = 1"]), \
+    with patch.object(sys, "argv", ["browser-agent", "-c", "x = 1"]), \
          patch("browser_harness.run.daemon_alive", return_value=False), \
          patch("browser_harness.run._local_chrome_listening", return_value=False), \
          patch("browser_harness.run.start_remote_daemon") as mock_start, \
@@ -37,7 +37,7 @@ def test_explicit_bu_cdp_url_blocks_cloud_bootstrap(monkeypatch):
     monkeypatch.setenv("BU_CDP_URL", "http://127.0.0.1:9333")
     monkeypatch.setenv("BROWSER_USE_API_KEY", "test-key")
     monkeypatch.setenv("BU_AUTOSPAWN", "1")
-    with patch.object(sys, "argv", ["browser-harness", "-c", "x = 1"]), \
+    with patch.object(sys, "argv", ["browser-agent", "-c", "x = 1"]), \
          patch("browser_harness.run.daemon_alive", return_value=False), \
          patch("browser_harness.run._local_chrome_listening", return_value=False), \
          patch("browser_harness.run.start_remote_daemon") as mock_start, \
@@ -54,7 +54,7 @@ def test_explicit_bu_cdp_ws_blocks_cloud_bootstrap(monkeypatch):
     monkeypatch.setenv("BU_CDP_WS", "ws://example.test/devtools/browser/abc")
     monkeypatch.setenv("BROWSER_USE_API_KEY", "test-key")
     monkeypatch.setenv("BU_AUTOSPAWN", "1")
-    with patch.object(sys, "argv", ["browser-harness", "-c", "x = 1"]), \
+    with patch.object(sys, "argv", ["browser-agent", "-c", "x = 1"]), \
          patch("browser_harness.run.daemon_alive", return_value=False), \
          patch("browser_harness.run._local_chrome_listening", return_value=False), \
          patch("browser_harness.run.start_remote_daemon") as mock_start, \
@@ -71,7 +71,7 @@ def test_empty_bu_cdp_url_does_not_block_bootstrap(monkeypatch):
     monkeypatch.setenv("BU_CDP_URL", "")
     monkeypatch.setenv("BROWSER_USE_API_KEY", "test-key")
     monkeypatch.setenv("BU_AUTOSPAWN", "1")
-    with patch.object(sys, "argv", ["browser-harness", "-c", "x = 1"]), \
+    with patch.object(sys, "argv", ["browser-agent", "-c", "x = 1"]), \
          patch("browser_harness.run.daemon_alive", return_value=False), \
          patch("browser_harness.run._local_chrome_listening", return_value=False), \
          patch("browser_harness.run.start_remote_daemon") as mock_start, \
@@ -89,7 +89,7 @@ def test_both_bu_cdp_url_and_bu_cdp_ws_set_blocks_bootstrap(monkeypatch):
     monkeypatch.setenv("BU_CDP_WS", "ws://example.test/devtools/browser/abc")
     monkeypatch.setenv("BROWSER_USE_API_KEY", "test-key")
     monkeypatch.setenv("BU_AUTOSPAWN", "1")
-    with patch.object(sys, "argv", ["browser-harness", "-c", "x = 1"]), \
+    with patch.object(sys, "argv", ["browser-agent", "-c", "x = 1"]), \
          patch("browser_harness.run.daemon_alive", return_value=False), \
          patch("browser_harness.run._local_chrome_listening", return_value=False), \
          patch("browser_harness.run.start_remote_daemon") as mock_start, \
@@ -106,7 +106,7 @@ def test_explicit_endpoint_does_not_break_daemon_alive_short_circuit(monkeypatch
     monkeypatch.setenv("BU_CDP_URL", "http://127.0.0.1:9333")
     monkeypatch.setenv("BROWSER_USE_API_KEY", "test-key")
     monkeypatch.setenv("BU_AUTOSPAWN", "1")
-    with patch.object(sys, "argv", ["browser-harness", "-c", "x = 1"]), \
+    with patch.object(sys, "argv", ["browser-agent", "-c", "x = 1"]), \
          patch("browser_harness.run.daemon_alive", return_value=True), \
          patch("browser_harness.run._local_chrome_listening", return_value=False), \
          patch("browser_harness.run.start_remote_daemon") as mock_start, \
@@ -124,7 +124,7 @@ def test_explicit_endpoint_does_not_break_local_chrome_short_circuit(monkeypatch
     monkeypatch.setenv("BU_CDP_URL", "http://127.0.0.1:9333")
     monkeypatch.setenv("BROWSER_USE_API_KEY", "test-key")
     monkeypatch.setenv("BU_AUTOSPAWN", "1")
-    with patch.object(sys, "argv", ["browser-harness", "-c", "x = 1"]), \
+    with patch.object(sys, "argv", ["browser-agent", "-c", "x = 1"]), \
          patch("browser_harness.run.daemon_alive", return_value=False), \
          patch("browser_harness.run._local_chrome_listening", return_value=True), \
          patch("browser_harness.run.start_remote_daemon") as mock_start, \
@@ -177,7 +177,7 @@ def test_c_flag_does_not_read_stdin():
     fake_stdin = StringIO("should not be read")
     fake_stdin.read = lambda: stdin_read.append(True) or ""
 
-    with patch.object(sys, "argv", ["browser-harness", "-c", "x = 1"]), \
+    with patch.object(sys, "argv", ["browser-agent", "-c", "x = 1"]), \
          patch("browser_harness.run.ensure_daemon"), \
          patch("browser_harness.run.print_update_banner"), \
          patch("sys.stdin", fake_stdin):

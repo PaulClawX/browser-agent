@@ -3,7 +3,7 @@ name: browser
 description: Direct browser control via CDP. Use when the user wants to automate, scrape, test, or interact with web pages. Connects to the user's already-running Chrome.
 ---
 
-# browser-harness
+# browser-agent
 
 Direct browser control via CDP. For task-specific edits, use `agent-workspace/agent_helpers.py`. For setup, install, or connection problems, read install.md.
 
@@ -14,20 +14,20 @@ Domain skills (community-contributed per-site playbooks under `agent-workspace/d
 ## Usage
 
 ```bash
-browser-harness -c '
+browser-agent -c '
 new_tab("https://docs.browser-use.com")
 wait_for_load()
 print(page_info())
 '
 ```
 
-- Invoke as browser-harness — it's on $PATH. No cd, no uv run.
+- Invoke as browser-agent — it's on $PATH. No cd, no uv run.
 - First navigation is new_tab(url), not goto_url(url) — goto runs in the user's active tab and clobbers their work.
 
 ## Tool call shape
 
 ```bash
-browser-harness -c '
+browser-agent -c '
 # any python. helpers pre-imported. daemon auto-starts.
 '
 ```
@@ -39,7 +39,7 @@ run.py calls ensure_daemon() before exec — you never start/stop manually unles
 Use remote for parallel sub-agents (each gets its own isolated browser via a distinct BU_NAME) or on a headless server. BROWSER_USE_API_KEY must be set. start_remote_daemon, list_cloud_profiles, list_local_profiles, sync_local_profile are pre-imported.
 
 ```bash
-browser-harness -c '
+browser-agent -c '
 start_remote_daemon("work")                               # default — clean browser, no profile
 # start_remote_daemon("work", profileName="my-work")      # reuse a cloud profile (already logged in)
 # start_remote_daemon("work", profileId="<uuid>")         # same, but by UUID
@@ -47,7 +47,7 @@ start_remote_daemon("work")                               # default — clean br
 # start_remote_daemon("work", proxyCountryCode=None)      # disable the Browser Use proxy
 '
 
-BU_NAME=work browser-harness -c '
+BU_NAME=work browser-agent -c '
 new_tab("https://example.com")
 print(page_info())
 '

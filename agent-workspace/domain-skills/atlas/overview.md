@@ -61,7 +61,7 @@ fetch('/graphql', {
 """)
 ```
 
-This reuses the session cookies of the current tab — no JWE juggling needed when browsing from inside browser-harness.
+This reuses the session cookies of the current tab — no JWE juggling needed when browsing from inside browser-agent.
 
 Known mutations (verified against production schema, April 2026): `opportunityCreate`, `opportunityUpdate`, `companyCreate`, `projectCreate`, `projectUpdate`, `opportunityAddLead`, `createOpportunityNote`. Create mutations return placeholder names; follow with an `opportunityUpdate` / `projectUpdate` to set the final name or description. `opportunityAddLead` side-effects `Project.company` onto `Opportunity.targetCompany` when the opp had none.
 

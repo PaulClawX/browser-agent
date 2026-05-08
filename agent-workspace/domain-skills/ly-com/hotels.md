@@ -17,7 +17,7 @@ not yet mapped. All notes below are PC unless stated otherwise.
   dates are available pre-login from `window.__NUXT__` SSR state.
 
 **Practical implication:** `http_get` is useless for prices. You need a
-browser session AND a logged-in user. `browser-harness` connecting to the
+browser session AND a logged-in user. `browser-agent` connecting to the
 user's daily Chrome is the cheapest way — once they log in once via
 `passport.ly.com`, the cookie sticks across runs.
 
@@ -202,7 +202,7 @@ done = "passport.ly.com" not in url and "login" not in url.lower()
 > document body isn't ready. Wrap each poll in try/except and continue.
 
 Cookies set by `passport.ly.com` are scoped to `.ly.com` and persist in the
-user's Chrome profile. They survive across `browser-harness` runs and across
+user's Chrome profile. They survive across `browser-agent` runs and across
 Chrome restarts. There is no need to re-login per session.
 
 ---

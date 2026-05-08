@@ -6,3 +6,4 @@ uv.lock
 *.egg-info/
 .idea/
 .claude/
+output

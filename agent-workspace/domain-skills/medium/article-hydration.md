@@ -33,7 +33,7 @@ Safe pattern: take the extracted markdown, then drop leading paragraphs that are
 ## Extractor
 
 ````bash
-browser-harness <<'PY'
+browser-agent <<'PY'
 new_tab("https://medium.com/@user/slug-abc123")
 wait_for_load()
 wait(2.0)  # Medium hydrates more UI after readyState=complete

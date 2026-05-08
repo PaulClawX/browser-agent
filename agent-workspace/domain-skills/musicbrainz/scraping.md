@@ -16,7 +16,7 @@ from helpers import http_get
 import json
 
 # REQUIRED: every request must include this header or you get HTTP 403
-UA = {"User-Agent": "browser-harness/1.0 (your@email.com)"}
+UA = {"User-Agent": "browser-agent/1.0 (your@email.com)"}
 
 data = json.loads(http_get("https://musicbrainz.org/ws/2/artist/?query=queen&fmt=json&limit=5", headers=UA))
 for a in data['artists']:
@@ -52,7 +52,7 @@ All entities share the same MBID (MusicBrainz ID) format: UUID v4, e.g. `0383dad
 from helpers import http_get
 import json
 
-UA = {"User-Agent": "browser-harness/1.0 (your@email.com)"}
+UA = {"User-Agent": "browser-agent/1.0 (your@email.com)"}
 
 resp = json.loads(http_get(
     "https://musicbrainz.org/ws/2/artist/?query=queen&fmt=json&limit=5",
@@ -315,7 +315,7 @@ Common Lucene field names per entity:
 ```python
 from concurrent.futures import ThreadPoolExecutor
 
-UA = {"User-Agent": "browser-harness/1.0 (your@email.com)"}
+UA = {"User-Agent": "browser-agent/1.0 (your@email.com)"}
 
 def fetch_artist(mbid):
     resp = json.loads(http_get(
@@ -343,7 +343,7 @@ Tested: 5-6 rapid sequential requests all succeed. Parallel requests at 3x concu
 ```python
 import time
 
-UA = {"User-Agent": "browser-harness/1.0 (your@email.com)"}
+UA = {"User-Agent": "browser-agent/1.0 (your@email.com)"}
 
 def browse_all_releases(artist_mbid, page_size=25):
     """Fetch all releases for an artist across multiple pages."""
@@ -449,7 +449,7 @@ MusicBrainz entity browser URL (human-readable): `https://musicbrainz.org/artist
 
 ## Gotchas
 
-- **`User-Agent` is mandatory** — without it you get HTTP 403 instantly. The header must include contact info, e.g. `browser-harness/1.0 (you@example.com)`. The default `http_get` UA (`Mozilla/5.0`) also gets 403.
+- **`User-Agent` is mandatory** — without it you get HTTP 403 instantly. The header must include contact info, e.g. `browser-agent/1.0 (you@example.com)`. The default `http_get` UA (`Mozilla/5.0`) also gets 403.
 
 - **Browse vs search response keys differ** — Search responses use `count` and `offset`; Browse responses (with `?artist=MBID`) use `release-count` / `release-offset` (or `release-group-count` etc.). Accessing `data['count']` on a browse response throws `KeyError`.
 

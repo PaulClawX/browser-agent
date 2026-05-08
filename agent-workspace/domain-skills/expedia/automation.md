@@ -1,6 +1,6 @@
 # Expedia — Browser Automation
 
-Field-tested against expedia.co.in on 2026-04-27 using `browser-harness` CDP
+Field-tested against expedia.co.in on 2026-04-27 using `browser-agent` CDP
 helpers (`goto`, `js`, `click`, `type_text`, `screenshot`).
 
 ---

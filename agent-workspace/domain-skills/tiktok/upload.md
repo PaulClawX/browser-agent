@@ -4,7 +4,7 @@ URL: `https://www.tiktok.com/tiktokstudio/upload?from=upload&lang=en` (always ap
 
 ## Prerequisites
 
-- Logged into TikTok in the Chrome profile browser-harness is attached to
+- Logged into TikTok in the Chrome profile browser-agent is attached to
 - Video file on local disk (mp4, <50MB)
 
 ## Stale draft banner
