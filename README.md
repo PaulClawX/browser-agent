@@ -1,7 +1,7 @@
 # Browser Agent
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/browser-use/media/main/browser-agent/banner-ink.svg" alt="Browser Agent cover" width="100%">
+  <img src="docs/images/cover.png" alt="Browser Agent cover" width="100%">
 </p>
 
 <p align="center">
@@ -168,12 +168,12 @@ export BH_DOMAIN_SKILLS=1
 
 When enabled, `goto_url` can surface relevant files from `docs/domain-skills/<site>/`.
 
-## Cloud Mode (Optional)
+<!-- ## Cloud Mode (Optional)
 
 With `BROWSER_USE_API_KEY`, you can run isolated remote browsers:
 
 - `start_remote_daemon("work")`
-- `BU_NAME=work browser-agent -c 'print(page_info())'`
+- `BU_NAME=work browser-agent -c 'print(page_info())'` -->
 
 
 
