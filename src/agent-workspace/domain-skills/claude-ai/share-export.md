@@ -50,7 +50,7 @@ A working script lives next to this file: `extract-share-transcript.py`. Run it 
 ```bash
 CLAUDE_SHARE_URL=https://claude.ai/share/<uuid> \
 OUTPUT_DIR=/path/to/transcripts \
-bh -c "$(cat agent-workspace/domain-skills/claude-ai/extract-share-transcript.py)"
+bh -c "$(cat src/agent-workspace/domain-skills/claude-ai/extract-share-transcript.py)"
 ```
 
 The script reads both via env vars (browser-agent's `-c` doesn't forward extra `argv`, so env vars are the cleanest passthrough).

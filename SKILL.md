@@ -5,7 +5,7 @@ description: Direct browser control via CDP. Use when the user wants to automate
 
 # browser-agent
 
-Direct browser control via CDP. For task-specific edits, use `agent-workspace/agent_helpers.py`. For setup, install, or connection problems, read install.md.
+Direct browser control via CDP. For task-specific edits, use `src/agent-workspace/agent_helpers.py`. For setup, install, or connection problems, read install.md.
 
 Domain skills (community-contributed per-site playbooks under `docs/domain-skills/`) are off by default. Set `BH_DOMAIN_SKILLS=1` to enable them; see the bottom section.
 
@@ -98,7 +98,7 @@ If you start struggling with a specific mechanic while navigating, look in docs/
 - Connect to the user's running Chrome. Don't launch your own browser.
 - cdp-use is only for CDPClient.send_raw. Prefer raw CDP strings over typed wrappers.
 - run.py stays tiny. No argparse, subcommands, or extra control layer.
-- Core helpers stay short. Put task-specific helper additions in `agent-workspace/agent_helpers.py`; daemon/bootstrap and remote session admin live in the core package.
+- Core helpers stay short. Put task-specific helper additions in `src/agent-workspace/agent_helpers.py`; daemon/bootstrap and remote session admin live in the core package.
 - Don't add a manager layer. No retries framework, session manager, daemon supervisor, config system, or logging framework.
 
 ## Gotchas (field-tested)

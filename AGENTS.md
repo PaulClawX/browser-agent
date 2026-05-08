@@ -16,7 +16,7 @@ Core code lives in `src/browser_harness/`:
 `SKILL.md` tells agents how to use the harness and CLI.
 `install.md` tells agents how to install it, attach a browser, and troubleshoot.
 
-An agent operating the harness only edits inside `agent-workspace/`:
+An agent operating the harness only edits inside `src/agent-workspace/`:
 - `agent_helpers.py` — task-specific browser helpers the agent adds
 - `docs/domain-skills/` — skills the agent writes and reads
 

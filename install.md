@@ -5,7 +5,7 @@ description: Install browser-agent into the current agent and connect it to a br
 
 # `browser-agent` installation
 
-Use this file only for browser-agent install, browser connection setup, and connection troubleshooting. For day-to-day browser work, read `SKILL.md`. Task-specific edits belong in `agent-workspace/agent_helpers.py` and `docs/domain-skills/`.
+Use this file only for browser-agent install, browser connection setup, and connection troubleshooting. For day-to-day browser work, read `SKILL.md`. Task-specific edits belong in `src/agent-workspace/agent_helpers.py` and `docs/domain-skills/`.
 
 ## Recommended `browser-agent` setup
 
@@ -18,7 +18,7 @@ uv tool install -e .
 command -v browser-agent
 ```
 
-That keeps the command global while still pointing at the real repo checkout, so when the agent edits `agent-workspace/agent_helpers.py` the next `browser-agent` uses the new code immediately. Prefer a stable path like `~/Developer/browser-agent`, not `/tmp`.
+That keeps the command global while still pointing at the real repo checkout, so when the agent edits `src/agent-workspace/agent_helpers.py` the next `browser-agent` uses the new code immediately. Prefer a stable path like `~/Developer/browser-agent`, not `/tmp`.
 
 ## Make browser-agent global for the current agent
 

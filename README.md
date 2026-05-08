@@ -146,7 +146,7 @@ Common helpers:
 - `SKILL.md` - operator rules for day-to-day use
 - `install.md` - first-time install and connection
 - `docs/interaction-skills/` - reusable browser mechanics playbooks
-- `agent-workspace/agent_helpers.py` - task-specific helper extensions
+- `src/agent-workspace/agent_helpers.py` - task-specific helper extensions
 - `docs/domain-skills/` - site-specific playbooks
 
 ## Interaction Skills
@@ -180,3 +180,12 @@ With `BROWSER_USE_API_KEY`, you can run isolated remote browsers:
 ## License
 
 [MIT](LICENSE)
+
+
+## Acknowledgements
+
+This project builds on and is inspired by the following open-source work:
+
+- [browser-use/browser-harness](https://github.com/browser-use/browser-harness) - the primary code and architecture source.
+- [OpenClaudex/openreview-agent](https://github.com/OpenClaudex/openreview-agent) - OpenReview dry-run workflow inspiration.
+- [OpenClaudex/open-claudex-computer-use](https://github.com/OpenClaudex/open-claudex-computer-use) - agent workflow and documentation patterns.

@@ -113,7 +113,7 @@ Returns the same shape as the listing items:
 A self-contained operator script next to this file. Run it with:
 
 ```bash
-BROWSER_USE_API_KEY=... python agent-workspace/domain-skills/browser-use-cloud/cleanup-zombies.py
+BROWSER_USE_API_KEY=... python src/agent-workspace/domain-skills/browser-use-cloud/cleanup-zombies.py
 # stops every active browser older than 30 minutes (default)
 
 BROWSER_USE_API_KEY=... python .../cleanup-zombies.py --older-than 5 --dry-run

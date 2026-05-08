@@ -10,7 +10,7 @@ from cdp_use.client import CDPClient
 
 def _load_env():
     repo_root = Path(__file__).resolve().parents[2]
-    workspace = Path(os.environ.get("BH_AGENT_WORKSPACE", repo_root / "agent-workspace")).expanduser()
+    workspace = Path(os.environ.get("BH_AGENT_WORKSPACE", repo_root / "src/agent-workspace")).expanduser()
     for p in (repo_root / ".env", workspace / ".env"):
         if not p.exists():
             continue
