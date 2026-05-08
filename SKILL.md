@@ -121,3 +121,12 @@ Only applies when `BH_DOMAIN_SKILLS=1`. Otherwise ignore — `agent-workspace/do
 When enabled, search `agent-workspace/domain-skills/<host>/` before inventing an approach. `goto_url` returns up to 10 skill filenames for the navigated host.
 
 If you learn anything non-obvious — a private API, stable selector, framework quirk, URL pattern, hidden wait, or site-specific trap — open a PR to `agent-workspace/domain-skills/<site>/`. Capture the durable shape of the site (the map, not the diary). Don't write pixel coordinates (break on layout), task narration, or secrets — the directory is public.
+
+## OpenReview add-on
+
+For OpenReview transfer and batch submission workflows, use:
+
+- `python scripts/or_transfer.py --help`
+- `python scripts/or_batch.py --help`
+
+Both are dry-run-first and require explicit `--apply` to write.

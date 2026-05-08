@@ -175,15 +175,18 @@ With `BROWSER_USE_API_KEY`, you can run isolated remote browsers:
 - `start_remote_daemon("work")`
 - `BU_NAME=work browser-agent -c 'print(page_info())'`
 
-## Contributing
 
-Contributions are welcome for:
-
-- runtime correctness and stability
-- docs and troubleshooting improvements
-- new interaction skills
-- durable domain skills with reproducible behavior
 
 ## License
 
 [MIT](LICENSE)
+
+## OpenReview Toolkit
+
+This repository now includes a dry-run-first OpenReview toolkit.
+
+- `scripts/or_transfer.py`: source note transfer payload generation + optional apply
+- `scripts/or_batch.py`: batch payload generation + optional apply
+- Docs: `docs/openreview/README.md`
+
+Both commands default to dry-run. Writes happen only with `--apply`.
