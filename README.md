@@ -1,7 +1,7 @@
 # Browser Agent
 
 <p align="center">
-  <img src="docs/images/cover.png" alt="Browser Agent cover" width="100%">
+  <img src="docs/images/cover.png" alt="Browser Agent cover" width="70%">
 </p>
 
 <p align="center">
