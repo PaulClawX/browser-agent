@@ -33,3 +33,8 @@ python scripts/or_batch.py \
   --invitation iclr.cc/2027/Conference/-/Submission \
   --out batch_payloads.json
 ```
+
+## Minimal example files
+
+- `docs/openreview/examples/source_note.min.json`
+- `docs/openreview/examples/batch.min.jsonl`

@@ -78,6 +78,7 @@ If you start struggling with a specific mechanic while navigating, look in inter
 - uploads.md
 - viewport.md
 - gemini-image-generation-editing.md
+- openreview-submission.md
 
 ## What actually works
 
