@@ -71,7 +71,7 @@ browser-agent -c 'print(page_info())'
 
 ## Browser Connection
 
-### Option A: attach to your normal Chrome profile
+### Attach to your normal Chrome profile
 
 1. Open `chrome://inspect/#remote-debugging`
 2. Enable `Allow remote debugging for this browser instance`
@@ -80,16 +80,6 @@ browser-agent -c 'print(page_info())'
 
 ```bash
 browser-agent -c 'print(page_info())'
-```
-
-### Option B: isolated profile on a dedicated port
-
-```bash
-/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
-  --remote-debugging-port=9222 \
-  --user-data-dir=/tmp/chrome-cdp-profile
-
-BU_CDP_URL=http://127.0.0.1:9222 browser-agent -c 'print(page_info())'
 ```
 
 For full setup and troubleshooting, see [install.md](install.md).
@@ -113,13 +103,7 @@ For full setup and troubleshooting, see [install.md](install.md).
 | Stable | Diagnostics and lifecycle | `--doctor`, daemon auto-start, update checks |
 | Best-effort | Complex anti-bot sites | Fallback to coordinate actions, retries, and skill-specific patterns |
 
-## Safety Model
 
-- **Connect to an already-running user browser.** Do not silently launch hidden browsers for user tasks.
-- **Upload-first guarantees for image tasks.** Never submit generation prompts before attachment verification.
-- **Human-in-the-loop for auth.** If login walls or security prompts appear, pause and ask the user.
-- **No secret persistence.** Do not commit credentials, cookies, or private tokens into repo files.
-- **Verify outcomes visibly.** Re-check screenshots/page state after meaningful actions.
 
 ## Core Command Pattern
 
@@ -158,29 +142,29 @@ See [docs/interaction-skills/](docs/interaction-skills/) for practical playbooks
 - screenshots, scrolling, viewport
 - Gemini image generation + editing
 
-## Domain Skills
 
-Enable domain hinting:
+## Core Contributors and Maintainers
 
-```bash
-export BH_DOMAIN_SKILLS=1
-```
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/PaulClawX">
+        <img src="https://images.weserv.nl/?url=https://paulpanwang.github.io/images/paul.jpg&h=100&w=100&fit=cover&mask=circle&maxage=7d" width="100px;" alt="Panwang Pan"/>
+      </a>
+      <br />
+      <sub><b>Panwang Pan</b></sub>
+      <br />
+      <sub><a href="mailto:paulpanwang@gmail.com">paulpanwang@gmail.com</a></sub>
+    </td>
+  </tr>
+</table>
 
-When enabled, `goto_url` can surface relevant files from `docs/domain-skills/<site>/`.
 
-<!-- ## Cloud Mode (Optional)
+## 📧 Contact
 
-With `BROWSER_USE_API_KEY`, you can run isolated remote browsers:
+Feel free to open an issue if you have any questions or suggestions.
 
-- `start_remote_daemon("work")`
-- `BU_NAME=work browser-agent -c 'print(page_info())'` -->
-
-
-
-## License
-
-[MIT](LICENSE)
-
+If this project helps you, please give it a ⭐ Star!
 
 ## Acknowledgements
 
@@ -188,4 +172,3 @@ This project builds on and is inspired by the following open-source work:
 
 - [browser-use/browser-harness](https://github.com/browser-use/browser-harness) - the primary code and architecture source.
 - [OpenClaudex/openreview-agent](https://github.com/OpenClaudex/openreview-agent) - OpenReview dry-run workflow inspiration.
-- [OpenClaudex/open-claudex-computer-use](https://github.com/OpenClaudex/open-claudex-computer-use) - agent workflow and documentation patterns.
