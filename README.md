@@ -44,8 +44,10 @@
 ## Quick Start
 
 ### For Agent (Recommended)
-Tell/Prompt your coding agent:
-> Install Browser Agent from `https://github.com/PaulClawX/browser-agent` and set it up to control my Chrome
+Tell your coding agent:
+```text
+Install Browser Agent from https://github.com/PaulClawX/browser-agent and set it up to control my Chrome
+```
 
 ### For Human
 ```bash
@@ -59,15 +61,16 @@ git clone https://github.com/PaulClawX/browser-agent && cd browser-agent && uv t
 1. Open `chrome://inspect/#remote-debugging`
 2. Enable `Allow remote debugging for this browser instance`
 3. Accept the Chrome allow popup when prompted
-4. Re-run:
 
+![Remote Debugging Setup](docs/images/setup-remote-debugging.png)
+
+4. Re-run:
 ```bash
 browser-agent -c 'print(page_info())'
 ```
 
 > See [install.md](install.md) for full setup.
 
-![Remote Debugging Setup](docs/images/setup-remote-debugging.png)
 
 
 ## Workflows
