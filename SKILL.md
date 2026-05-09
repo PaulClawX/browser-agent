@@ -78,6 +78,7 @@ If you start struggling with a specific mechanic while navigating, look in docs/
 - uploads.md
 - viewport.md
 - gemini-image-generation-editing.md
+- auth-walls.md
 
 ## What actually works
 
