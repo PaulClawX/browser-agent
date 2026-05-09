@@ -43,30 +43,13 @@
 
 ## Quick Start
 
-Tell your coding agent:
+### For Agent (Recommended)
+Tell/Prompt your coding agent:
+> Install Browser Agent from `https://github.com/PaulClawX/browser-agent` and set it up to control my Chrome
 
-> Install Browser Agent from `https://github.com/PaulClawX/browser-agent` and set it up to control my Chrome via CDP.
-
-### 1) Install
-
+### For Human
 ```bash
-git clone https://github.com/PaulClawX/browser-agent
-cd browser-agent
-uv tool install -e .
-```
-
-### 2) Verify
-
-```bash
-command -v browser-agent
-browser-agent --version
-browser-agent --doctor
-```
-
-### 3) First command
-
-```bash
-browser-agent -c 'print(page_info())'
+git clone https://github.com/PaulClawX/browser-agent && cd browser-agent && uv tool install -e . && browser-agent --doctor
 ```
 
 ## Browser Connection
@@ -82,16 +65,10 @@ browser-agent -c 'print(page_info())'
 browser-agent -c 'print(page_info())'
 ```
 
-For full setup and troubleshooting, see [install.md](install.md).
+> See [install.md](install.md) for full setup.
 
-## Features
+![Remote Debugging Setup](docs/images/setup-remote-debugging.png)
 
-- Direct CDP control against real Chrome tabs.
-- Minimal daemon + IPC architecture.
-- Rich helper APIs for navigation, DOM eval, input, uploads, screenshots, tabs.
-- Interaction skills for repeatable UI mechanics.
-- Domain skills for site-specific workflows.
-- Gemini image generation/editing workflow with upload verification gate.
 
 ## Workflows
 
@@ -104,26 +81,6 @@ For full setup and troubleshooting, see [install.md](install.md).
 | Best-effort | Complex anti-bot sites | Fallback to coordinate actions, retries, and skill-specific patterns |
 
 
-
-## Core Command Pattern
-
-```bash
-browser-agent -c '
-new_tab("https://example.com")
-wait_for_load()
-print(page_info())
-'
-```
-
-Common helpers:
-
-- `new_tab(url)`, `goto_url(url)`
-- `page_info()`, `wait_for_load()`, `wait_for_element()`
-- `click_at_xy(x, y)`, `type_text(text)`, `press_key(key)`
-- `js(expression)`, `cdp(method, **params)`
-- `upload_file(selector, path)`
-- `capture_screenshot(path=None)`
-
 ## Project Layout
 
 - `src/browser_harness/` - core runtime modules
@@ -133,14 +90,7 @@ Common helpers:
 - `src/agent-workspace/agent_helpers.py` - task-specific helper extensions
 - `docs/domain-skills/` - site-specific playbooks
 
-## Interaction Skills
 
-See [docs/interaction-skills/](docs/interaction-skills/) for practical playbooks, including:
-
-- connection, dialogs, dropdowns, uploads
-- tabs, iframes, cross-origin iframes, shadow DOM
-- screenshots, scrolling, viewport
-- Gemini image generation + editing
 
 
 ## Core Contributors and Maintainers
@@ -171,9 +121,7 @@ See [docs/interaction-skills/](docs/interaction-skills/) for practical playbooks
 
 ## 📧 Contact
 
-Feel free to open an issue if you have any questions or suggestions.
-
-If this project helps you, please give it a ⭐ Star!
+Feel free to open an issue if you have any questions or suggestions. If this project helps you, please give it a ⭐ Star!
 
 ## Acknowledgements
 
