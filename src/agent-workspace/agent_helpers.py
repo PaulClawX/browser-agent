@@ -143,3 +143,28 @@ def github_create_org_repo(org, repo, description="", private=True, retries=3):
         "errors": last_errors,
         "attempts": attempts,
     }
+
+
+def ask_user(prompt, expect="done"):
+    """Block on stdin until the user replies. Bring Chrome to the front first.
+
+    The agent decides *when* to call this (e.g. it sees a login wall, captcha,
+    2FA, or any state it can't resolve). The helper only handles the mechanics
+    of getting the user's attention and reading the reply.
+
+    Returns the stripped stdin line. If the user just hits Enter, returns `expect`.
+    """
+    import shutil, subprocess, sys
+
+    if sys.platform == "darwin" and shutil.which("osascript"):
+        subprocess.run(
+            ["osascript", "-e", 'tell application "Google Chrome" to activate'],
+            check=False,
+        )
+    sys.stderr.write(f"\n[browser-agent needs you] {prompt}\n  reply (Enter = '{expect}'): ")
+    sys.stderr.flush()
+    try:
+        reply = sys.stdin.readline().strip()
+    except (EOFError, KeyboardInterrupt):
+        reply = ""
+    return reply or expect
