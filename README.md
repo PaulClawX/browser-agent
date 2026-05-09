@@ -148,7 +148,7 @@ See [docs/interaction-skills/](docs/interaction-skills/) for practical playbooks
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/PaulClawX">
+      <a href="https://github.com/paulpanwang">
         <img src="https://images.weserv.nl/?url=https://paulpanwang.github.io/images/paul.jpg&h=100&w=100&fit=cover&mask=circle&maxage=7d" width="100px;" alt="Panwang Pan"/>
       </a>
       <br />
