@@ -33,7 +33,7 @@
 > [!TIP]
 > **I'm a human** -> Read this README for install, setup, and safe workflows.
 >
-> **I'm an agent** -> Read [SKILL.md](SKILL.md) for operation rules and execution patterns.
+> **I'm an agent** -> Read [SKILL.md](SKILL.md) for operation rules and execution patterns. (Recommended)
 
 `browser-agent` is a minimal runtime that lets agents control your real Chrome session directly over CDP, while keeping task logic editable in-repo.
 
